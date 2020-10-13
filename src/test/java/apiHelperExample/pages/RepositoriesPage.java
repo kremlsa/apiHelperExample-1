@@ -1,6 +1,6 @@
 package apiHelperExample.pages;
 
-import io.qameta.allure.Step;
+import com.epam.reportportal.annotations.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +21,7 @@ public class RepositoriesPage extends Page {
         return repoNames;
     }
 
+    @Step("Получили результаты поиска")
     public LinkedList<String> getRepoListNamesFromPage() {
         return getRepoNames().stream()
                 .map(item -> waitForElement(item).getText().trim().toLowerCase())

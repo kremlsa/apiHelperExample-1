@@ -1,25 +1,20 @@
 package apiHelperExample;
 
+import org.aeonbits.owner.Config;
+
 import java.io.IOException;
 import java.util.Properties;
 
 /**
  * Loads test suite configuration from resource files.
  */
-public class SuiteConfiguration {
+public interface SuiteConfiguration extends Config {
+  @Key("site.url")
+  String siteUrl();
 
-  private Properties properties;
+  @Key("github.url")
+  String githubUrl();
 
-  public SuiteConfiguration() throws IOException {
-  	this(System.getProperty("application.properties"));
-  }
-
-  public SuiteConfiguration(String fromResource) throws IOException {
-    properties = new Properties();
-    properties.load(SuiteConfiguration.class.getResourceAsStream(fromResource));
-  }
-
-  public String getProperty(String name) {
-    return properties.getProperty(name);
-  }
+  @Key("github.repositories.path")
+  String githubRepositoriesPath();
 }
