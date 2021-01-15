@@ -46,8 +46,8 @@ pipeline {
                       results: [[path: 'target/allure-results']]
                     ])
 
-                    // Узнаем ветку репозитория (т.к. это не multipipeline job, то вариант через env.BRANCH_NAME увы не работает)
-                    def branch = env.BRANCH_NAME
+                    // Узнаем ветку репозитория
+                    def branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD\n').trim().tokenize().last()
 
                     // Достаем информацию по тестам из junit репорта
                     def summary = junit testResults: '**/target/surefire-reports/*.xml'
