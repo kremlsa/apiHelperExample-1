@@ -6,7 +6,7 @@ pipeline {
         githubPush()
     }
 
-    properties([
+    options([
       parameters([
         string(name: 'GIT_URL', defaultValue: 'https://github.com/GannaChernyshova/apiHelperExample.git', description: 'The target git url'),
         string(name: 'BROWSER_NAME', choices: ['chrome\nfirefox'], description: 'The target browser in Selenoid'),
@@ -18,13 +18,13 @@ pipeline {
         stage('Pull from GitHub') {
             steps {
                 git ([
-                    url: ${params.GIT_URL}
+                    url: "${params.GIT_URL}"
                     ])
             }
         }
         stage('Run maven clean test') {
             steps {
-                bat 'mvn clean test -Dbrowser_name=${params.BROWSER_NAME} -Dbrowser_version=${params.BROWSER_VERSION}'
+                bat 'mvn clean test -Dbrowser_name=\"${params.BROWSER_NAME\"} -Dbrowser_version=\"${params.BROWSER_VERSION}\"'
             }
         }
         stage('Backup and Reports') {
