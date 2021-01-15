@@ -49,15 +49,15 @@ pipeline {
 
                     // Узнаем ветку репозитория
                     def branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD\n').trim().tokenize().last()
-                    echo branch
+                    echo "branch= " + branch
 
                     // Достаем информацию по тестам из junit репорта
                     def summary = junit testResults: '**/target/surefire-reports/*.xml'
-                    echo summary
+                    echo "summary"
 
                     // Текст оповещения
                     def message = "${currentBuild.currentResult}: Job ${env.JOB_NAME}, build ${env.BUILD_NUMBER}, branch ${branch}\nDuration - ${duration}\nTest Summary - ${summary.totalCount}, Failures: ${summary.failCount}, Skipped: ${summary.skipCount}, Passed: ${summary.passCount}\nMore info at: ${env.BUILD_URL}"
-                    echo message
+                    echo "message= " + message
 
                     // Отправка результатов на почту
                     emailext body: "${message}",
