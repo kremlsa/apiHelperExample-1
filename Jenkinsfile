@@ -53,7 +53,7 @@ pipeline {
 
                     // Достаем информацию по тестам из junit репорта
                     def summary = junit testResults: '**/target/surefire-reports/*.xml'
-                    println(summary.getProperties())
+                    println("summary generated")
 
                     // Текст оповещения
                     def message = "${currentBuild.currentResult}: Job ${env.JOB_NAME}, build ${env.BUILD_NUMBER}, branch ${branch}\nTest Summary - ${summary.totalCount}, Failures: ${summary.failCount}, Skipped: ${summary.skipCount}, Passed: ${summary.passCount}\nMore info at: ${env.BUILD_URL}"
