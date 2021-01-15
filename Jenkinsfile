@@ -6,13 +6,11 @@ pipeline {
         githubPush()
     }
 
-    options([
-      parameters([
+    parameters {
         string(name: 'GIT_URL', defaultValue: 'https://github.com/GannaChernyshova/apiHelperExample.git', description: 'The target git url'),
-        string(name: 'BROWSER_NAME', choices: ['chrome\nfirefox'], description: 'The target browser in Selenoid'),
-        string(name: 'BROWSER_VERSION', choices: ['86.0\n85.0\n78.0'], description: 'The target browser version in Selenoid')
-       ])
-    ])
+        choice(name: 'BROWSER_NAME', choices: ['chrome', 'firefox'], description: 'Pick the target browser in Selenoid'),
+        choice(name: 'BROWSER_VERSION', choices: ['86.0', '85.0', '78.0'], description: 'Pick the target browser version in Selenoid')
+    }
 
     stages {
         stage('Pull from GitHub') {
