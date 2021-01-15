@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Run maven clean test') {
             steps {
-                sh 'mvn clean test -Dbrowser_name=\"${params.BROWSER_NAME\"} -Dbrowser_version=\"${params.BROWSER_VERSION}\"'
+                sh 'mvn clean test -Dbrowser_name=\"${params.BROWSER_NAME}\" -Dbrowser_version=\"${params.BROWSER_VERSION}\"'
             }
         }
         stage('Backup and Reports') {
