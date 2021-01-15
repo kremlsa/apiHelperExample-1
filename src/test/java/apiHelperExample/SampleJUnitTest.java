@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SampleJUnitTest extends JUnitTestBase {
 
     private HomePage homepage;
-    private RepositoriesApiHelper repositoriesApiHelper;
 
     @Test
     @Epic("GitHub")
@@ -27,7 +26,6 @@ public class SampleJUnitTest extends JUnitTestBase {
     @Story("Список найденных репозиториев содержит ключевое слово")
     @Description("Тест проверяет, что список найденных репозиториев содержит ключевое слово")
     public void testRepositoriesListSearch() {
-        repositoriesApiHelper = new RepositoriesApiHelper();
         String searchQuery = "test2code";
         homepage = new HomePage(driver);
         homepage.open(baseUrl);
@@ -43,12 +41,11 @@ public class SampleJUnitTest extends JUnitTestBase {
     @Story("Количество найденных репозиториев равно ожидаемому значению")
     @Description("Тест проверяет, что количество найденных репозиториев равно ожидаемому результату")
     public void testRepositoriesListSearch1() {
-        repositoriesApiHelper = new RepositoriesApiHelper();
         String searchQuery = "healenium";
         homepage = new HomePage(driver);
         homepage.open(baseUrl);
         List<String> actualRepositoriesList = homepage.searchForRepositories(searchQuery)
                 .getRepoListNamesFromPage();
-        assertThat(actualRepositoriesList.size(), equalTo(9));
+        assertThat(actualRepositoriesList.size(), equalTo(10));
     }
 }
