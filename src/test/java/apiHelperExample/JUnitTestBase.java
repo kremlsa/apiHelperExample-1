@@ -34,7 +34,7 @@ public class JUnitTestBase {
     @SneakyThrows
     @BeforeEach
     public void initDriver()  {
-        String slenoidURL = "http://192.168.1.69:4444/wd/hub";
+        String slenoidURL = "http://1111.11.11:4444/wd/hub"; //1111.11.11 - your IP adress
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName(System.getProperty("browser_name", "chrome"));
         caps.setVersion(System.getProperty("browser_version", "86.0"));
@@ -42,7 +42,7 @@ public class JUnitTestBase {
         caps.setCapability("screenResolution", "1280x1024");
         caps.setCapability("enableVideo", false);
         caps.setCapability("enableLog", true);
-        
+
 
         driver = new RemoteWebDriver(new URL(slenoidURL), caps);
 
