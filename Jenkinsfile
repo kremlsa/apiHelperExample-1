@@ -47,7 +47,7 @@ pipeline {
                     ])
 
                     // Узнаем ветку репозитория (т.к. это не multipipeline job, то вариант через env.BRANCH_NAME увы не работает)
-                    def branch = bat(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD\n').trim().tokenize().last()
+                    def branch = env.BRANCH_NAME
 
                     // Достаем информацию по тестам из junit репорта
                     def summary = junit testResults: '**/target/surefire-reports/*.xml'
