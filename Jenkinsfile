@@ -37,6 +37,9 @@ pipeline {
             post {
                 always {
                   script {
+                    if (currentBuild.currentResult == 'SUCCESS') {
+                    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "shaikin135@gmail.com", sendToIndividuals: true])
+                    }
                     // Формирование отчета
                     allure([
                       includeProperties: false,
