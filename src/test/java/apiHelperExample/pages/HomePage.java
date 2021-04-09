@@ -28,14 +28,14 @@ public class HomePage extends Page {
     @Step("Открыта страница {baseUrl}")
     public void open(String baseUrl) {
         driver.get(baseUrl);
-        Allure.addAttachment("Главная страница GitHub", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        //Allure.addAttachment("Главная страница GitHub", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     @Step("Ищем репозитории по ключевому слову {value}")
     public RepositoriesPage searchForRepositories(String value) {
         waitForElement(searchField).sendKeys(value);
         waitForElement(searchField).sendKeys(Keys.ENTER);
-        Allure.addAttachment(format("Найденные репозитории по ключевому слову ", value), new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        //Allure.addAttachment(format("Найденные репозитории по ключевому слову ", value), new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         return new RepositoriesPage(driver);
     }
 }
