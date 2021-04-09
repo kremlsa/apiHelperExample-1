@@ -32,17 +32,17 @@ public class JUnitTestBase {
     @BeforeEach
     public void initDriver()  {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-//        String slenoidURL = "http://localhost:4444/wd/hub";
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setBrowserName("chrome");
-//        caps.setVersion("86.0");
-//        caps.setCapability("enableVNC", true);
-//        caps.setCapability("screenResolution", "1280x1024");
-//        caps.setCapability("enableVideo", true);
-//        caps.setCapability("enableLog", true);
-//
-//        driver = new RemoteWebDriver(new URL(slenoidURL), caps);
+        //driver = new ChromeDriver();
+        String slenoidURL = "http://172.18.0.2:4444/wd/hub";
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setBrowserName("chrome");
+        caps.setVersion("89.0");
+        caps.setCapability("enableVNC", true);
+        caps.setCapability("screenResolution", "1280x1024");
+        caps.setCapability("enableVideo", true);
+        caps.setCapability("enableLog", true);
+
+        driver = new RemoteWebDriver(new URL(slenoidURL), caps);
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
