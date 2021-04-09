@@ -38,7 +38,7 @@ public class JUnitTestBase {
         String slenoidURL = "http://172.18.0.2:4444/wd/hub"; //111.11.11.11 - your IP address
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName(System.getProperty("browser_name", "chrome"));
-        caps.setVersion(System.getProperty("browser_version", "86.0"));
+        caps.setVersion(System.getProperty("browser_version", "89.0"));
         caps.setCapability("enableVNC", true);
         caps.setCapability("screenResolution", "1280x1024");
         caps.setCapability("enableVideo", false);
