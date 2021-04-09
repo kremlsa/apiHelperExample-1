@@ -32,16 +32,4 @@ public class SampleJUnitTest extends JUnitTestBase {
         homepage = new HomePage(driver);
         homepage.open(baseUrl);
     }
-
-    @Test
-    @Epic("GitHub")
-    @Feature("Поиск репозиториев")
-    @Story("Количество найденных репозиториев равно ожидаемому значению")
-    @Description("Тест проверяет, что количество найденных репозиториев равно ожидаемому результату")
-    public void testRepositoriesListSearch1() {
-        repositoriesApiHelper = new RepositoriesApiHelper();
-        String searchQuery = "healenium";
-        homepage = new HomePage(driver);
-        homepage.open(baseUrl);
-    }
 }
