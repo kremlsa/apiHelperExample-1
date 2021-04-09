@@ -27,9 +27,6 @@ public class SampleJUnitTest extends JUnitTestBase {
     @Story("Список найденных репозиториев содержит ключевое слово")
     @Description("Тест проверяет, что список найденных репозиториев содержит ключевое слово")
     public void testRepositoriesListSearch() {
-        repositoriesApiHelper = new RepositoriesApiHelper();
-        String searchQuery = "test2code";
-        homepage = new HomePage(driver);
-        homepage.open(baseUrl);
+        driver.get("https://ya.ru");
     }
 }
