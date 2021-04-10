@@ -35,7 +35,7 @@ public class JUnitTestBase {
     @SneakyThrows
     @BeforeEach
     public void initDriver()  {
-        String slenoidURL = "http://172.18.0.2:4444/wd/hub"; //111.11.11.11 - your IP address
+        String slenoidURL = "http://localhost:4444/wd/hub"; //111.11.11.11 - your IP address
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName(System.getProperty("browser_name", "chrome"));
         caps.setVersion(System.getProperty("browser_version", "89.0"));
